@@ -4,11 +4,11 @@ import com.vdurmont.emoji.EmojiParser;
 
 public class Constants {
     // Emojis
-    public final static String EMOJI_SMILEY = EmojiParser.parseToUnicode(":smiley:");
+    public final static String EMOJI_DOG = EmojiParser.parseToUnicode(":dog:");
     public final static String EMOJI_WAVE = EmojiParser.parseToUnicode(":wave:");
 
     // Information messages
-    public final static String WELCOME_MSG_TEXT = "Привет " + EMOJI_WAVE + " Это бот приюта для кошек о собак. Чем я могу Вам помочь? " + EMOJI_SMILEY;
+    public final static String WELCOME_MSG_TEXT = "Привет " + EMOJI_WAVE + " Это бот приюта для собак. Чем я могу Вам помочь? " + EMOJI_DOG;
 
     // Buttons text
     public final static String BUTTON_STAGE1_TEXT = "Узнать информацию о приюте (этап 1)";
