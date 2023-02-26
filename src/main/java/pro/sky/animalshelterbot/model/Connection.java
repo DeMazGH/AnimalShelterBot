@@ -1,11 +1,18 @@
 package pro.sky.animalshelterbot.model;
 
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-
+@Entity
 public class Connection {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
     private Long petId;
     private Long chatId;
     //ид усыновителя
@@ -15,6 +22,9 @@ public class Connection {
 
     }
 
+    public Long getId() {
+        return id;
+    }
 
     public Long getPetId() {
         return petId;
