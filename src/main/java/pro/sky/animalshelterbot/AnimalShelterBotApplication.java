@@ -8,9 +8,7 @@ public class AnimalShelterBotApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(AnimalShelterBotApplication.class, args);
-        //test
-        System.out.println("hello!");
-        //test2
+
     }
 
 }
