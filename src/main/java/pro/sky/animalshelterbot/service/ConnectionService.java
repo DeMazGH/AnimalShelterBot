@@ -1,5 +1,7 @@
 package pro.sky.animalshelterbot.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pro.sky.animalshelterbot.model.Connection;
@@ -16,6 +18,8 @@ public class ConnectionService {
 
     private final ConnectoinRepository connectionRepository;
 
+    private final Logger logger = LoggerFactory.getLogger(ConnectionService.class);
+
     public ConnectionService(ConnectoinRepository connectionRepository) {
         this.connectionRepository = connectionRepository;
     }
@@ -30,6 +34,8 @@ public class ConnectionService {
      */
     @Transactional
         public void create(long petId, long chatId, LocalDateTime dateTime) {
+            logger.info("Method create has been run");
+
             Connection connection = new Connection();
             connection.setPetId(petId);
             connection.setChatId(chatId);

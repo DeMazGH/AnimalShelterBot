@@ -1,5 +1,7 @@
 package pro.sky.animalshelterbot.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pro.sky.animalshelterbot.model.Notification;
@@ -16,6 +18,8 @@ public class NotificationService {
 
     private final NotificationRepository notificationRepository;
 
+    private final Logger logger = LoggerFactory.getLogger(NotificationService.class);
+
     public NotificationService(NotificationRepository notificationRepository) {
         this.notificationRepository = notificationRepository;
     }
@@ -31,6 +35,8 @@ public class NotificationService {
      */
     @Transactional
     public void create(long chatId, String text, LocalDateTime dateTime) {
+        logger.info("Method create has been run");
+
         Notification notification = new Notification();
         notification.setChatId(chatId);
         notification.setNotificationText(text);
