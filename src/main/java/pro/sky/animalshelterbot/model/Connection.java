@@ -1,30 +1,30 @@
 package pro.sky.animalshelterbot.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Entity
+/**
+ * Класс, соответствующий таблице, в которой устанавливается взаимосвязь между питомцами и усыновителями
+ */
+
 public class Connection {
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    /**
+     * идентификатор питомца, primary key
+     */
     private Long petId;
+    /**
+     * id чата - идентификатор усыновителя
+     */
     private Long chatId;
-    //ид усыновителя
+    /**
+     * дата усыновления
+     */
     private LocalDateTime dateTime;
-    //дата усыновления
     public Connection() {
 
     }
 
-    public Long getId() {
-        return id;
-    }
 
     public Long getPetId() {
         return petId;
