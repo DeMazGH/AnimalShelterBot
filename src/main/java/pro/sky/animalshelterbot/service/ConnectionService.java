@@ -8,6 +8,9 @@ import pro.sky.animalshelterbot.repository.ConnectoinRepository;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
+/**
+ *
+ */
 public class ConnectionService {
     @Service
     public class PetService {
