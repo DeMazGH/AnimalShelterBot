@@ -11,17 +11,16 @@ import java.time.temporal.ChronoUnit;
 /**
  *
  */
+@Service
 public class ConnectionService {
-    @Service
-    public class PetService {
 
-        private final ConnectoinRepository connectionRepository;
+    private final ConnectoinRepository connectionRepository;
 
-        public PetService(ConnectoinRepository connectionRepository) {
-            this.connectionRepository = connectionRepository;
-        }
+    public ConnectionService(ConnectoinRepository connectionRepository) {
+        this.connectionRepository = connectionRepository;
+    }
 
-        @Transactional
+    @Transactional
         public void create(long petId, long chatId, LocalDateTime dateTime) {
             Connection connection = new Connection();
             connection.setPetId(petId);
@@ -29,5 +28,5 @@ public class ConnectionService {
             connection.setDateTime(dateTime.truncatedTo(ChronoUnit.MINUTES));
             connectionRepository.save(connection);
         }
-    }
+
 }
