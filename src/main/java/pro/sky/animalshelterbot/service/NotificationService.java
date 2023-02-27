@@ -8,6 +8,9 @@ import pro.sky.animalshelterbot.repository.NotificationRepository;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
+/**
+ *Класс сервиса для работы с {@link NotificationRepository} и сущностью {@link Notification}
+ */
 @Service
 public class NotificationService {
 
@@ -17,6 +20,15 @@ public class NotificationService {
         this.notificationRepository = notificationRepository;
     }
 
+    /**
+     * Метод создает экземпляр класса {@link Notification} и устанавливает значение его полей согласно значениям
+     * параметров метода, после этого сохраняет сущность в БД
+     * с помошью метода {@link NotificationRepository#save(Object)}.
+     *
+     * @param chatId идентификатор чата, не может быть {@code null}
+     * @param text текст уведомления, не может быть {@code null}
+     * @param dateTime дата и время отправления уведомления, не может быть {@code null}
+     */
     @Transactional
     public void create(long chatId, String text, LocalDateTime dateTime) {
         Notification notification = new Notification();
