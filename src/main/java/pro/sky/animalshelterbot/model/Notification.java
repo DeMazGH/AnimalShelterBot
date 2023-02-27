@@ -7,6 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Класс, описывающий параметры сообщений (Notification), которые телеграм-бот отправляет пользователю
+ */
+
 @Entity
 public class Notification {
     @Id

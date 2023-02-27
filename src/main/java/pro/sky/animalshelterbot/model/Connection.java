@@ -4,13 +4,23 @@ package pro.sky.animalshelterbot.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * Класс, соответствующий таблице, в которой устанавливается взаимосвязь между питомцами и усыновителями
+ */
 
 public class Connection {
+    /**
+     * идентификатор питомца, primary key
+     */
     private Long petId;
+    /**
+     * id чата - идентификатор усыновителя
+     */
     private Long chatId;
-    //ид усыновителя
+    /**
+     * дата усыновления
+     */
     private LocalDateTime dateTime;
-    //дата усыновления
     public Connection() {
 
     }
