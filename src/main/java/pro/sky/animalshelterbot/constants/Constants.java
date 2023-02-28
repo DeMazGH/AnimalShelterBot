@@ -5,7 +5,7 @@ import com.pengrad.telegrambot.model.CallbackQuery;
 public class Constants {
     // Emojis
     public final static String EMOJI_DOG = EmojiParser.parseToUnicode(":dog:");
-    public final static String EMOJI_WAVE = EmojiParser.parseToUnicode(":slightly_smiling_face:");
+    public final static String EMOJI_WAVE = EmojiParser.parseToUnicode(":smiley:");
 
     // Information messages
     public final static String WELCOME_MSG_TEXT = "Привет " + EMOJI_WAVE + " Это бот приюта для собак. Чем я могу Вам помочь? " + EMOJI_DOG;
