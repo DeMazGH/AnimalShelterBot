@@ -34,4 +34,18 @@ public class ShelterService {
         logger.info("Was invoked method - findShelterById");
         return shelterRepository.findById(id);
     }
+
+    public Shelter updateShelter(Shelter shelter) {
+        logger.info("Was invoked method - updateStudent");
+
+        if (shelterRepository.findById(shelter.getId()).isPresent()) {
+            return shelterRepository.save(shelter);
+        }
+        return null;
+    }
+
+    public void deleteShelter(long id) {
+        logger.info("Was invoked method - updateStudent");
+        shelterRepository.deleteById(id);
+    }
 }

@@ -29,7 +29,7 @@ public class ShelterController {
     @PostMapping
     public ResponseEntity<Shelter> createShelter(@RequestBody Shelter shelter) {
         Shelter createdShelter = shelterService.createShelter(shelter);
-        return ResponseEntity.ok(shelter);
+        return ResponseEntity.ok(createdShelter);
     }
 
     /**
@@ -45,5 +45,34 @@ public class ShelterController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(shelter);
+    }
+
+    /**
+     * Метод принимает запрос с телом в формате JSON и создает сущность {@link Shelter}
+     * Используется метод createShelter из сервиса {@link ShelterService}
+     *
+     * @param shelter тело запроса с измененными данными о приюте
+     * @return 200 - данные измененного приюта, 404 - приют не найден
+     */
+    @PutMapping
+    public ResponseEntity<Shelter> updateShelter(@RequestBody Shelter shelter) {
+        Shelter updatedShelter = shelterService.updateShelter(shelter);
+        if (updatedShelter == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(updatedShelter);
+    }
+
+    /**
+     * Метод принимает запрос с параметром id приюта и удаляет сущность {@link Shelter}
+     * Используется метод createShelter из сервиса {@link ShelterService}
+     *
+     * @param shelterId идентификатор удаляемого приюта
+     * @return 200
+     */
+    @DeleteMapping("{shelterId}")
+    public ResponseEntity<Shelter> deleteShelter(@PathVariable long shelterId) {
+        shelterService.deleteShelter(shelterId);
+        return ResponseEntity.ok().build();
     }
 }
