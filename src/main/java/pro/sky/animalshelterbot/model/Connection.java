@@ -1,6 +1,10 @@
 package pro.sky.animalshelterbot.model;
 
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -8,9 +12,16 @@ import java.util.Objects;
  * Класс, соответствующий таблице, в которой устанавливается взаимосвязь между питомцами и усыновителями
  */
 
+@Entity
 public class Connection {
     /**
-     * идентификатор питомца, primary key
+     * идентификатор, primary key
+     */
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
+    /**
+     * идентификатор питомца
      */
     private Long petId;
     /**
@@ -25,6 +36,9 @@ public class Connection {
 
     }
 
+    public Long getId() {
+        return id;
+    }
 
     public Long getPetId() {
         return petId;
