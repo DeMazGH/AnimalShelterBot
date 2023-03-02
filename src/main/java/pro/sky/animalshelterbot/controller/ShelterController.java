@@ -1,10 +1,7 @@
 package pro.sky.animalshelterbot.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pro.sky.animalshelterbot.model.Shelter;
 import pro.sky.animalshelterbot.service.ShelterService;
 
@@ -27,11 +24,26 @@ public class ShelterController {
      * Используется метод createShelter из сервиса {@link ShelterService}
      *
      * @param shelter тело запроса с данными о создаваемом приюте
-     * @return в теле ответа возвращает данные созданного приюта
+     * @return данные созданного приюта
      */
     @PostMapping
     public ResponseEntity<Shelter> createShelter(@RequestBody Shelter shelter) {
         Shelter createdShelter = shelterService.createShelter(shelter);
+        return ResponseEntity.ok(shelter);
+    }
+
+    /**
+     * Метод принимает запрос с параметром id приюта и возвращает в теле ответа данные о приюте.
+     *
+     * @param shelterId - идентификатор приюта
+     * @return 200 - данные о приюте, 404 - приют не найден
+     */
+    @GetMapping({"{shelterId}"})
+    public ResponseEntity<Shelter> getShelter(@PathVariable long shelterId) {
+        Shelter shelter = shelterService.findShelterById(shelterId);
+        if (shelter == null) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(shelter);
     }
 }

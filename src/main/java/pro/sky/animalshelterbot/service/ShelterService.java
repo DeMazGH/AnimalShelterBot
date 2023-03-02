@@ -22,11 +22,16 @@ public class ShelterService {
 
     /**
      * Метод сохраняет {@link Shelter с помошью метода {@link ShelterRepository#save(Object)}.
-     *
+     * <p>
      * @param shelter данные о приюте, не может быть {@code null}
      */
     public Shelter createShelter(Shelter shelter) {
         logger.info("Was invoked method - createShelter");
         return shelterRepository.save(shelter);
+    }
+
+    public Shelter findShelterById(long id) {
+        logger.info("Was invoked method - findShelterById");
+        return shelterRepository.findById(id);
     }
 }
