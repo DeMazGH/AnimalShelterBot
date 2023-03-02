@@ -21,24 +21,12 @@ public class ShelterService {
     }
 
     /**
-     * Метод создает экземпляр класса {@link Shelter} и устанавливает значение его полей согласно значениям
-     * параметров метода, после этого сохраняет сущность в БД
-     * с помошью метода {@link ShelterRepository#save(Object)}.
+     * Метод сохраняет {@link Shelter с помошью метода {@link ShelterRepository#save(Object)}.
      *
-     * @param name название приюта, не может быть {@code null}
-     * @param address адрес приюта, не может быть {@code null}
-     * @param info дополнительная информация о приюте
-     * @param map карта, как добраться до приюта
+     * @param shelter данные о приюте, не может быть {@code null}
      */
-    public void createShelter(String name, String address, String info, byte[] map) {
+    public Shelter createShelter(Shelter shelter) {
         logger.info("Was invoked method - createShelter");
-
-        Shelter shelter = new Shelter();
-        shelter.setName(name);
-        shelter.setAddress(address);
-        shelter.setInfo(info);
-        shelter.setMap(map);
-
-        shelterRepository.save(shelter);
+        return shelterRepository.save(shelter);
     }
 }
