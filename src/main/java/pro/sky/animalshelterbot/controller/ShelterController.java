@@ -109,7 +109,7 @@ public class ShelterController {
     @Operation(
             summary = "Изменить данные о приюте",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                    description = "Актуальные данные о приюте. " +
+                    description = "Измененные данные о приюте. " +
                             "Обязательны поля: id приюта в котором нужно внести изменения, name и address.",
                     content = @Content(
                             mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -154,10 +154,6 @@ public class ShelterController {
                     @ApiResponse(
                             responseCode = "200",
                             description = "Приют успешно удален"
-                    ),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "Приют с таким id не найден"
                     )
             }
     )
