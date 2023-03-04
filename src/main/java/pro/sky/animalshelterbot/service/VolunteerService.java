@@ -39,7 +39,7 @@ public class VolunteerService {
      * @param id идентификатор волонтера
      * @return данные о волонтере
      */
-    public Volunteer getVolunteer(long id) {
+    public Volunteer findVolunteerById(long id) {
         logger.info("Was invoked method - getVolunteer");
 
         return volunteerRepository.findById(id);
