@@ -2,6 +2,7 @@ package pro.sky.animalshelterbot.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -138,6 +139,19 @@ public class VolunteerController {
         return ResponseEntity.ok().build();
     }
 
+    @Operation(
+            summary = "Получить список всех волонтеров",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Список всех волонтеров",
+                            content = @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                    array = @ArraySchema(schema = @Schema(implementation = Volunteer.class))
+                            )
+                    )
+            }
+    )
     @GetMapping("/all")
     public ResponseEntity<List<Volunteer>> findAllVolunteer() {
         return ResponseEntity.ok(volunteerService.findAllVolunteers());
