@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import pro.sky.animalshelterbot.model.Volunteer;
 import pro.sky.animalshelterbot.service.VolunteerService;
 
+import java.util.List;
+
 /**
  * Класс для обработки запросов от клиента и возвращения результатов,
  * работает с сущностью {@link pro.sky.animalshelterbot.service.VolunteerService}.
@@ -134,5 +136,10 @@ public class VolunteerController {
 
         volunteerService.deleteVolunteer(volunteerId);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Volunteer>> findAllVolunteer() {
+        return ResponseEntity.ok(volunteerService.findAllVolunteers());
     }
 }

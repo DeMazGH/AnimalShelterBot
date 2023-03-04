@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import pro.sky.animalshelterbot.model.Volunteer;
 import pro.sky.animalshelterbot.repository.VolunteerRepository;
 
+import java.util.List;
+
 /**
  * Класс сервиса для работы с {@link VolunteerRepository} и сущностью {@link pro.sky.animalshelterbot.model.Volunteer}
  */
@@ -71,5 +73,16 @@ public class VolunteerService {
         logger.info("Was invoked method - deleteVolunteer");
 
         volunteerRepository.deleteById(id);
+    }
+
+    /**
+     * Метод возвращает список всех волонтеров в БД.
+     *
+     * @return список всех волонтеров
+     */
+    public List<Volunteer> findAllVolunteers() {
+        logger.info("Was invoked method - findAllVolunteers");
+
+        return volunteerRepository.findAll();
     }
 }
