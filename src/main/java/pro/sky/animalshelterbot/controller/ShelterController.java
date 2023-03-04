@@ -154,10 +154,6 @@ public class ShelterController {
                     @ApiResponse(
                             responseCode = "200",
                             description = "Приют успешно удален"
-                    ),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "Приют с таким id не найден"
                     )
             }
     )
