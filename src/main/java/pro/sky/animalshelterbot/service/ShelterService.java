@@ -48,7 +48,7 @@ public class ShelterService {
      * Использует метод {@link ShelterRepository#save(Object)}
      *
      * @param shelter измененные данные приюта
-     * @return измененные данные приюта
+     * @return измененные данные приюта, если приют не найден возвращает {@code null}
      */
     public Shelter updateShelter(Shelter shelter) {
         logger.info("Was invoked method - updateStudent");

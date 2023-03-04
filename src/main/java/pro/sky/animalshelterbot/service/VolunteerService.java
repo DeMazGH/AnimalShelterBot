@@ -50,7 +50,7 @@ public class VolunteerService {
      * Используется метод {@link VolunteerRepository#save(Object)}
      *
      * @param updatedVolunteer измененные данные волонтера
-     * @return измененные данные волонтера
+     * @return измененные данные волонтера, если волонтер не найден возвращает {@code null}
      */
     public Volunteer updateVolunteer(Volunteer updatedVolunteer) {
         logger.info("Was invoked method - updateVolunteer");
