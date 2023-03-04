@@ -37,7 +37,7 @@ public class ShelterController {
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
                     description = "Данные создаваемого приюта. " +
                             "id переданный в теле будет игнорироваться, будет присвоен следующий id из БД. " +
-                            "Поля имя и адрес обязательны к заполнению.",
+                            "Поля: name и address обязательны к заполнению.",
                     content = @Content(
                             mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = Shelter.class)
@@ -99,8 +99,9 @@ public class ShelterController {
     }
 
     /**
-     * Метод принимает запрос с телом в формате JSON и создает сущность {@link Shelter}
-     * Используется метод createShelter из сервиса {@link ShelterService}
+     * Метод принимает запрос с телом в формате JSON и изменяет данные
+     * в сущности {@link Shelter} согласно новым данным.
+     * Используется метод updateShelter из сервиса {@link ShelterService}
      *
      * @param shelter тело запроса с измененными данными о приюте
      * @return 200 - данные измененного приюта, 404 - приют не найден
@@ -109,7 +110,7 @@ public class ShelterController {
             summary = "Изменить данные о приюте",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
                     description = "Актуальные данные о приюте. " +
-                            "Обязательны поля: id приюта в котором нужно внести изменения, название и адрес.",
+                            "Обязательны поля: id приюта в котором нужно внести изменения, name и address.",
                     content = @Content(
                             mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = Shelter.class)
@@ -142,7 +143,7 @@ public class ShelterController {
 
     /**
      * Метод принимает запрос с параметром id приюта и удаляет сущность {@link Shelter}
-     * Используется метод createShelter из сервиса {@link ShelterService}
+     * Используется метод deleteShelter из сервиса {@link ShelterService}
      *
      * @param shelterId идентификатор удаляемого приюта
      * @return 200

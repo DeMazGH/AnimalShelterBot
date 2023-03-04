@@ -25,7 +25,7 @@ public class Shelter {
     private String name;
 
     /**
-     * Адресс приюта
+     * Адрес приюта
      */
     private String address;
 
