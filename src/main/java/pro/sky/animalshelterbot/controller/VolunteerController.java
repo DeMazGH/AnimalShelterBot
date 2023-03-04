@@ -1,7 +1,10 @@
 package pro.sky.animalshelterbot.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pro.sky.animalshelterbot.model.Volunteer;
 import pro.sky.animalshelterbot.service.VolunteerService;
 
 /**
@@ -14,9 +17,12 @@ public class VolunteerController {
 
     private final VolunteerService volunteerService;
 
+    private final Logger logger = LoggerFactory.getLogger(VolunteerController.class);
+
     public VolunteerController(VolunteerService volunteerService) {
         this.volunteerService = volunteerService;
     }
+
 
 
 }
