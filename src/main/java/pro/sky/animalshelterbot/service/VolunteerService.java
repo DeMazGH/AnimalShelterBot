@@ -55,7 +55,10 @@ public class VolunteerService {
     public Volunteer updateVolunteer(Volunteer updatedVolunteer) {
         logger.info("Was invoked method - updateVolunteer");
 
-        return volunteerRepository.save(updatedVolunteer);
+        if (volunteerRepository.findById(updatedVolunteer.getId()).isPresent()) {
+            return volunteerRepository.save(updatedVolunteer);
+        }
+        return null;
     }
 
     /**
