@@ -21,20 +21,35 @@ public class ShelterService {
     }
 
     /**
-     * Метод сохраняет {@link Shelter с помошью метода {@link ShelterRepository#save(Object)}.
-     * <p>
-     * @param shelter данные о приюте, не может быть {@code null}
+     * Метод сохраняет сущность {@link Shelter} в БД, с помошью метода {@link ShelterRepository#save(Object)}.
+     *
+     * @param shelter данные о приюте
+     * @return данные о сохраненном приюте
      */
     public Shelter createShelter(Shelter shelter) {
         logger.info("Was invoked method - createShelter");
         return shelterRepository.save(shelter);
     }
 
+    /**
+     * Метод ищет данные о приюте по его id.
+     * Используется метод {@link ShelterRepository#findById(long)}
+     *
+     * @param id идентификатор приюта
+     * @return данные о приюте
+     */
     public Shelter findShelterById(long id) {
         logger.info("Was invoked method - findShelterById");
         return shelterRepository.findById(id);
     }
 
+    /**
+     * Метод изменяет данные приюта, заменяет сущность {@link Shelter} в БД по указаннму в ней id.
+     * Использует метод {@link ShelterRepository#save(Object)}
+     *
+     * @param shelter измененные данные приюта
+     * @return измененные данные приюта
+     */
     public Shelter updateShelter(Shelter shelter) {
         logger.info("Was invoked method - updateStudent");
 
@@ -44,6 +59,12 @@ public class ShelterService {
         return null;
     }
 
+    /**
+     * Метод удаляет приют по указанному id.
+     * Использует метод {@link ShelterRepository#deleteById(Object)}
+     *
+     * @param id идентификатор удаляемого приюта
+     */
     public void deleteShelter(long id) {
         logger.info("Was invoked method - updateStudent");
         shelterRepository.deleteById(id);

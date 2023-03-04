@@ -23,7 +23,7 @@ public class VolunteerService {
     /**
      * Метод сохраняет сущность {@link Volunteer} в БД, с помошью метода {@link VolunteerRepository#save(Object)}
      *
-     * @param volunteer данные о волонтере, не может быть null
+     * @param volunteer данные о волонтере
      * @return данные о сохраненном волонтере
      */
     public Volunteer createVolunteer(Volunteer volunteer) {
@@ -33,7 +33,7 @@ public class VolunteerService {
     }
 
     /**
-     * Метод получает данные о волонтере по его id.
+     * Метод ищет данные о волонтере по его id.
      * Используется метод {@link VolunteerRepository#findById(long)}
      *
      * @param id идентификатор волонтера
@@ -46,7 +46,7 @@ public class VolunteerService {
     }
 
     /**
-     * Метод изменяет данные волонтере, заменяет сущность {@link Volunteer} по указанному в ней id.
+     * Метод изменяет данные волонтера, заменяет сущность {@link Volunteer} по указанному в ней id.
      * Используется метод {@link VolunteerRepository#save(Object)}
      *
      * @param updatedVolunteer измененные данные волонтера
