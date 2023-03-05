@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import pro.sky.animalshelterbot.model.Pet;
 import pro.sky.animalshelterbot.repository.PetRepository;
 
+import java.util.List;
+
 /**
  *Класс сервиса для работы с {@link PetRepository} и сущностью {@link Pet}
  */
@@ -22,17 +24,61 @@ public class PetService {
     }
 
     /**
-     * Метод создает экземпляр класса {@link Pet} и устанавливает значение его полей согласно значениям
-     * параметров метода, после этого сохраняет сущность в БД с помошью метода {@link PetRepository#save(Object)}.
+     * Метод сохраняет сущность {@link Pet} в БД
      *
-     * @param petName имя питомца, не может быть {@code null}
+     * @param pet данные о питомце
+     * @return данные о питомце
      */
-    @Transactional
-    public void create(String petName) {
-        logger.info("Method create has been run");
+    public Pet createPet(Pet pet) {
+        logger.info("Was invoked method - createPet");
 
-        Pet pet = new Pet();
-        pet.setPetName(petName);
-        petRepository.save(pet);
+        return petRepository.save(pet);
+    }
+
+    /**
+     * Метод ищет питомца в БД по его id
+     *
+     * @param id идентификатор питомца
+     * @return данные о питомце
+     */
+    public Pet findPetById(long id) {
+        logger.info("Was invoked method - findPetById");
+
+        return petRepository.findById(id);
+    }
+
+    /**
+     * Метод изменят данные питомца
+     *
+     * @param pet измененные данные о питомце
+     * @return измененные данные о питомце
+     */
+    public Pet updatePet(Pet pet) {
+        logger.info("Was invoked method - update pet");
+
+        if (petRepository.findById(pet.getId()).isPresent()) {
+            return petRepository.save(pet);
+        }
+        return null;
+    }
+
+    /**
+     * Метод удаляет питомца из БД
+     *
+     * @param id идентификатор питомца
+     */
+    public void deletePet(long id) {
+        logger.info("Was invoked method - deletePet");
+        petRepository.deleteById(id);
+    }
+
+    /**
+     * Метод возвращает список всех питомцев в БД
+     *
+     * @return список всех питомцев
+     */
+    public List<Pet> findAllPets() {
+        logger.info("Was invoked method - findAllPets");
+        return petRepository.findAll();
     }
 }
