@@ -2,6 +2,7 @@ package pro.sky.animalshelterbot.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -10,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pro.sky.animalshelterbot.model.Shelter;
 import pro.sky.animalshelterbot.service.ShelterService;
+
+import java.util.List;
 
 /**
  * Класс для обработки запросов от клиента и возвращения результатов,
@@ -164,5 +167,23 @@ public class ShelterController {
 
         shelterService.deleteShelter(shelterId);
         return ResponseEntity.ok().build();
+    }
+
+    @Operation(
+            summary = "Получить список всех приютов",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Получен список всех приютов",
+                            content = @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                    array = @ArraySchema(schema = @Schema(implementation = Shelter.class))
+                            )
+                    )
+            }
+    )
+    @GetMapping("/all")
+    public ResponseEntity<List<Shelter>> findAllShelters() {
+        return ResponseEntity.ok(shelterService.findAllShelters());
     }
 }

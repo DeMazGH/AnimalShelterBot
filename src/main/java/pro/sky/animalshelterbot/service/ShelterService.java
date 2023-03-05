@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import pro.sky.animalshelterbot.model.Shelter;
 import pro.sky.animalshelterbot.repository.ShelterRepository;
 
+import java.util.List;
+
 /**
  * Класс сервиса для работы с {@link ShelterRepository} и сущностью {@link Shelter}
  */
@@ -68,5 +70,15 @@ public class ShelterService {
     public void deleteShelter(long id) {
         logger.info("Was invoked method - updateStudent");
         shelterRepository.deleteById(id);
+    }
+
+    /**
+     * Метод возвращает список всех приютов из БД.
+     *
+     * @return список всех приютов
+     */
+    public List<Shelter> findAllShelters() {
+        logger.info("Was invoked method - findAllShelters");
+        return shelterRepository.findAll();
     }
 }
