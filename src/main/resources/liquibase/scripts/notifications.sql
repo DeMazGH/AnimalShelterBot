@@ -41,3 +41,12 @@ create table if not exists volunteer
     chat_id             text    not null,
     phone_number        text    not null
 )
+
+-- changeset demaz:4
+ALTER TABLE pet
+    ADD age INTEGER not null,
+    ADD photo BYTEA,
+    ADD kind_of_animal TEXT not null,
+    ADD animal_breed TEXT not null,
+    ADD shelter_id BIGINT not null,
+    ADD owner_id BIGINT;
