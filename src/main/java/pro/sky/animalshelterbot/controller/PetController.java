@@ -31,7 +31,7 @@ public class PetController {
     @Operation(
             summary = "Создание питомца",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                    description = "Данные создаваемого питомца" +
+                    description = "Данные создаваемого питомца. " +
                             "id переданный в теле будет игнорироваться, будет присвоен следующий id из БД. " +
                             "Обязательные поля: pet_name, age, kind_of_animal,animal_breed, shelter_id",
                     content = @Content(
