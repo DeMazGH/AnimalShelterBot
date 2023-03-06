@@ -90,7 +90,7 @@ public class VolunteerController {
     @Operation(
             summary = "Изменение данных волонтера.",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                    description = "Измененные данные о волонтере. Все поля обязательны.",
+                    description = "Данные о волонтере с изменениями. Все поля обязательны.",
                     content = @Content(
                             mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = Volunteer.class)
