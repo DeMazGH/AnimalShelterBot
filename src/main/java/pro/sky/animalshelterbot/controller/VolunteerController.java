@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Класс для обработки запросов от клиента и возвращения результатов,
- * работает с сущностью {@link pro.sky.animalshelterbot.service.VolunteerService}.
+ * работает с сущностью {@link VolunteerService}.
  */
 @RestController
 @RequestMapping("/volunteer")

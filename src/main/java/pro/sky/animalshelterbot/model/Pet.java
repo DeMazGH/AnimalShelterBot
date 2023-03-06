@@ -51,9 +51,14 @@ public class Pet {
     private Long shelterId;
 
     /**
-     * id хозяина животного
+     * id владельца животного
      */
     private Long ownerId;
+
+    // второй вариант вместо private Long ownerId:
+    // @ManyToOne
+    //@JoinColumn(name = "customer_id")
+    //private Customer customer;
 
 
     public Long getId() {
