@@ -153,7 +153,7 @@ public class VolunteerController {
             }
     )
     @GetMapping("/all")
-    public ResponseEntity<List<Volunteer>> findAllVolunteer() {
+    public ResponseEntity<List<Volunteer>> findAllVolunteers() {
         return ResponseEntity.ok(volunteerService.findAllVolunteers());
     }
 }
