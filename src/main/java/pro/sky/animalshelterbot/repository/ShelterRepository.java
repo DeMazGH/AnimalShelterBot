@@ -6,4 +6,6 @@ import pro.sky.animalshelterbot.model.Shelter;
 
 @Repository
 public interface ShelterRepository extends JpaRepository<Shelter, Long> {
+
+    Shelter findById(long id);
 }

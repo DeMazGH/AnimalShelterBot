@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import pro.sky.animalshelterbot.model.Shelter;
 import pro.sky.animalshelterbot.repository.ShelterRepository;
 
+import java.util.List;
+
 /**
  * Класс сервиса для работы с {@link ShelterRepository} и сущностью {@link Shelter}
  */
@@ -21,24 +23,62 @@ public class ShelterService {
     }
 
     /**
-     * Метод создает экземпляр класса {@link Shelter} и устанавливает значение его полей согласно значениям
-     * параметров метода, после этого сохраняет сущность в БД
-     * с помошью метода {@link ShelterRepository#save(Object)}.
+     * Метод сохраняет сущность {@link Shelter} в БД, с помошью метода {@link ShelterRepository#save(Object)}.
      *
-     * @param name название приюта, не может быть {@code null}
-     * @param address адрес приюта, не может быть {@code null}
-     * @param info дополнительная информация о приюте
-     * @param map карта, как добраться до приюта
+     * @param shelter данные о приюте
+     * @return данные о сохраненном приюте
      */
-    public void createShelter(String name, String address, String info, byte[] map) {
+    public Shelter createShelter(Shelter shelter) {
         logger.info("Was invoked method - createShelter");
+        return shelterRepository.save(shelter);
+    }
 
-        Shelter shelter = new Shelter();
-        shelter.setName(name);
-        shelter.setAddress(address);
-        shelter.setInfo(info);
-        shelter.setMap(map);
+    /**
+     * Метод ищет данные о приюте по его id.
+     * Используется метод {@link ShelterRepository#findById(long)}
+     *
+     * @param id идентификатор приюта
+     * @return данные о приюте
+     */
+    public Shelter findShelterById(long id) {
+        logger.info("Was invoked method - findShelterById");
+        return shelterRepository.findById(id);
+    }
 
-        shelterRepository.save(shelter);
+    /**
+     * Метод изменяет данные приюта, заменяет сущность {@link Shelter} в БД по указаннму в ней id.
+     * Использует метод {@link ShelterRepository#save(Object)}
+     *
+     * @param shelter измененные данные приюта
+     * @return измененные данные приюта, если приют не найден возвращает {@code null}
+     */
+    public Shelter updateShelter(Shelter shelter) {
+        logger.info("Was invoked method - updateStudent");
+
+        if (shelterRepository.findById(shelter.getId()).isPresent()) {
+            return shelterRepository.save(shelter);
+        }
+        return null;
+    }
+
+    /**
+     * Метод удаляет приют по указанному id.
+     * Использует метод {@link ShelterRepository#deleteById(Object)}
+     *
+     * @param id идентификатор удаляемого приюта
+     */
+    public void deleteShelter(long id) {
+        logger.info("Was invoked method - updateStudent");
+        shelterRepository.deleteById(id);
+    }
+
+    /**
+     * Метод возвращает список всех приютов из БД.
+     *
+     * @return список всех приютов
+     */
+    public List<Shelter> findAllShelters() {
+        logger.info("Was invoked method - findAllShelters");
+        return shelterRepository.findAll();
     }
 }

@@ -2,11 +2,10 @@ package pro.sky.animalshelterbot.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pro.sky.animalshelterbot.model.Pet;
+import pro.sky.animalshelterbot.model.Volunteer;
 
 @Repository
-public interface PetRepository extends JpaRepository<Pet, Long> {
+public interface VolunteerRepository extends JpaRepository<Volunteer, Long> {
 
-    Pet findById(long id);
-
+    Volunteer findById(long id);
 }
