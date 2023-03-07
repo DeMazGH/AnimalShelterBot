@@ -112,7 +112,7 @@ public class ShelterController {
     @Operation(
             summary = "Изменить данные о приюте",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                    description = "Измененные данные о приюте. " +
+                    description = "Данные о приюте с изменениями. " +
                             "Обязательны поля: id приюта в котором нужно внести изменения, name и address.",
                     content = @Content(
                             mediaType = MediaType.APPLICATION_JSON_VALUE,
