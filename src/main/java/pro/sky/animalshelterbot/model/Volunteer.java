@@ -27,7 +27,7 @@ public class Volunteer {
     /**
      * идентификатор чата волонтера в Telegram
      */
-    private String chatId;
+    private Long chatId;
 
     /**
      * номер телефона волонтера
@@ -49,11 +49,11 @@ public class Volunteer {
         this.name = name;
     }
 
-    public String getChatId() {
+    public Long getChatId() {
         return chatId;
     }
 
-    public void setChatId(String chatId) {
+    public void setChatId(Long chatId) {
         this.chatId = chatId;
     }
 
