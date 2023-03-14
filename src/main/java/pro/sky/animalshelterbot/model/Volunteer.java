@@ -37,6 +37,13 @@ public class Volunteer {
     public Volunteer() {
     }
 
+    public Volunteer(Long id, String name, Long chatId, String phoneNumber) {
+        this.id = id;
+        this.name = name;
+        this.chatId = chatId;
+        this.phoneNumber = phoneNumber;
+    }
+
     public Long getId() {
         return id;
     }
