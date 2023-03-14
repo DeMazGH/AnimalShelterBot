@@ -81,3 +81,8 @@ alter table volunteer
 
 --changeset demaz:7
 drop table connection;
+
+--changeset demaz:8
+alter table pet
+    drop column owner_id,
+    add customer_id bigint;
