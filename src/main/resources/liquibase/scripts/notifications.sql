@@ -78,3 +78,6 @@ create table if not exists report
 alter table volunteer
     drop column chat_id,
     add column chat_id bigint not null;
+
+--changeset demaz:7
+drop table connection;
