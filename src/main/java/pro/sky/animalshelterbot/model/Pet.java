@@ -1,9 +1,6 @@
 package pro.sky.animalshelterbot.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -53,12 +50,9 @@ public class Pet {
     /**
      * id владельца животного
      */
-    private Long ownerId;
-
-    // второй вариант вместо private Long ownerId:
-    // @ManyToOne
-    //@JoinColumn(name = "customer_id")
-    //private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
 
     public Long getId() {
@@ -113,12 +107,12 @@ public class Pet {
         this.shelterId = shelterId;
     }
 
-    public Long getOwnerId() {
-        return ownerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setOwnerId(Long ownerId) {
-        this.ownerId = ownerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @Override
@@ -126,12 +120,12 @@ public class Pet {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pet pet = (Pet) o;
-        return Objects.equals(id, pet.id) && Objects.equals(petName, pet.petName) && Objects.equals(age, pet.age) && Arrays.equals(photo, pet.photo) && Objects.equals(kindOfAnimal, pet.kindOfAnimal) && Objects.equals(animalBreed, pet.animalBreed) && Objects.equals(shelterId, pet.shelterId) && Objects.equals(ownerId, pet.ownerId);
+        return Objects.equals(id, pet.id) && Objects.equals(petName, pet.petName) && Objects.equals(age, pet.age) && Arrays.equals(photo, pet.photo) && Objects.equals(kindOfAnimal, pet.kindOfAnimal) && Objects.equals(animalBreed, pet.animalBreed) && Objects.equals(shelterId, pet.shelterId) && Objects.equals(customer, pet.customer);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id, petName, age, kindOfAnimal, animalBreed, shelterId, ownerId);
+        int result = Objects.hash(id, petName, age, kindOfAnimal, animalBreed, shelterId, customer);
         result = 31 * result + Arrays.hashCode(photo);
         return result;
     }
